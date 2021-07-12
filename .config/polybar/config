@@ -1,0 +1,160 @@
+[bar/bottombar]
+font-0 = JetBrainsMono Nerd Font:style=Regular:size=13;4
+font-1 = JetBrainsMono Nerd Font Mono:style=Regular:size=13;4
+
+
+modules-right = wireless spacer volume spacer battery spacer date
+modules-left = arch spacer i3
+bottom = true
+
+[bar/topbar]
+font-0 = JetBrainsMono Nerd Font:style=Regular:size=13;4
+font-1 = JetBrainsMono Nerd Font Mono:style=Regular:size=13;4
+tray-position = right
+
+modules-center = time
+bottom=false
+
+[module/spacer]
+type = custom/text
+content = "  "
+
+[module/arch]
+type = custom/text
+content = ""
+
+[module/time]
+type = internal/date
+date = %H:%M:%S
+
+[module/date]
+type = internal/date
+date = %A %d/%m
+
+[module/wireless]
+type = internal/network
+interface = wlp0s20f3
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+format-packetloss = <animation-packetloss> <label-connected>
+
+label-connected = %upspeed% %downspeed% %local_ip% @ %essid%
+label-disconnected = "Disconnected!"
+
+ramp-signal-0 = %{T1}[     ]%{T-}
+ramp-signal-1 = %{T1}[#    ]%{T-}
+ramp-signal-2 = %{T1}[##   ]%{T-}
+ramp-signal-3 = %{T1}[###  ]%{T-}
+ramp-signal-4 = %{T1}[#### ]%{T-}
+ramp-signal-5 = %{T1}[#####]%{T-}
+
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = #ff0000
+animation-packetloss-1 = 
+animation-packetloss-framerate = 500
+
+[module/volume]
+type = internal/pulseaudio
+use-ui-max = false
+interval = 5
+
+format-volume = <ramp-volume> <label-volume>
+
+label-volume = %percentage%
+label-muted = ﱝ 2%percentage%
+
+ramp-volume-0=奄
+ramp-volume-1=奔
+ramp-volume-2=墳
+ramp-volume-3= 
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+poll-interval = 5
+full-at = 99
+
+format-charging = <ramp-capacity> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+ramp-capacity-10 = 
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+
+label-dimmed-underline = #1f1f1f
+
+; Available tags:
+;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
+;   <label-mode> (default)
+format = <label-state> <label-mode>
+
+; Available tokens:
+;   %mode%
+; Default: %mode%
+label-mode = %mode%
+label-mode-padding = 0
+label-mode-background = #e60053
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-focused =  %index%
+label-focused-foreground = #ffffff
+label-focused-background = #3f3f3f
+label-focused-underline = #fba922
+label-focused-padding = 1
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-visible = %index%
+label-visible-underline = #555555
+label-visible-padding = 1
+
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+;   %output%
+; Default: %icon%  %name%
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 1
